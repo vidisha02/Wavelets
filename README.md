@@ -1,6 +1,5 @@
 The application of image segmentation is shown in a variety of areas: medical imaging,
-remote sensing, and autonomous driving. Conventional architectures in the design of UNets rely on max-pooling or average pooling techniques to reduce features. Sometimes, the
-techniques lead to loss of spatial information that is essential for precise segmentation. In
+remote sensing, and autonomous driving. Conventional architectures in the design of U-Nets rely on max-pooling or average pooling techniques to reduce features. Sometimes, the techniques lead to loss of spatial information that is essential for precise segmentation. In
 the present work, we introduced a new form of the double skip U-Net architecture with the
 DWT as a pooling technique that encourages a better preservation of their multi-resolution
 characteristics. Using wavelet-based pooling, our objective is to conserve the essential
