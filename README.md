@@ -13,6 +13,7 @@ holds potential for applications demanding high-fidelity segmentation and may be
 adapted to enhance other deep learning models in subsequent research.
 
 Model Architecture:
+
 Encoder:For the encoder path, DWT is used at every down-sampling for each feature
 map. DWT decomposes the feature map into four different components:
 1. LL: The approximation sub-band that reflects low-frequency content with more or
@@ -20,7 +21,7 @@ less preservation of structure of the feature map.
 2. HH,HL,LH: These are high-frequency sub-bands that contain edge detail, textures,
 etc., and other high-resolution structures within an image.
 
-Double skip connections: To ensure the effective transfer of these frequency components, the model incorporates double skip connections at each down-sampling level:
+Double skip connections: To ensure the effective transfer of these frequency components, the model incorporates double skip connections at each down-sampling level:
 1. Up skip: The low-frequency component (LL) is transferred directly from the encoder
 to the corresponding layer in the decoder via an up skip connection. This helps
 retain the coarse structure and spatial context in the decoder.
@@ -29,10 +30,10 @@ decoder with a down skip connection, retaining all the important fine details th
 ensure proper boundaries of segmentation.
 
 Decoder: The process in the decoder is as follows:
-1. The IDWT of the new low-frequency component (LL) and the high-frequency components (LH, HL, HH) from the down skip connection is taken, effectively reconstructing a more detailed and accurate up-sampled feature map.
+1. The IDWT of the new low-frequency component (LL) and the high-frequency components (LH, HL, HH) from the down skip connection is taken, effectively reconstructing a more detailed and accurate up-sampled feature map.
 2. The output of the IDWT is then concatenated with the low-frequency component
-(LL) transferred via the up skip connection, providing the decoder with both highlevel context and spatial detail.
-3. This concatenated feature map is subsequently passed through a series of convolution layers to refine the feature representation and extract segmentation-specific
+(LL) transferred via the up skip connection, providing the decoder with both high-level context and spatial detail.
+3. This concatenated feature map is subsequently passed through a series of convolution layers to refine the feature representation and extract segmentation-specific
 information at each layer of up-sampling.
 
 The encoder consists of four down-sampling blocks. Each block begins with a convolutional layer, followed by batch normalization and Leaky ReLU activation. This sequence
