@@ -30,18 +30,18 @@ decoder with a down skip connection, retaining all the important fine details th
 ensure proper boundaries of segmentation.
 
 Decoder: The process in the decoder is as follows:
-1. The IDWT of the new low-frequency component (LL) and the high-frequency components (LH, HL, HH) from the down skip connection is taken, effectively reconstructing a more detailed and accurate up-sampled feature map.
+1. The IDWT of the new low-frequency component (LL) and the high-frequency components (LH, HL, HH) from the down skip connection is taken, effectively reconstructing a more detailed and accurate up-sampled feature map.
 2. The output of the IDWT is then concatenated with the low-frequency component
 (LL) transferred via the up skip connection, providing the decoder with both high-level context and spatial detail.
 3. This concatenated feature map is subsequently passed through a series of convolution layers to refine the feature representation and extract segmentation-specific
 information at each layer of up-sampling.
 
-The encoder consists of four down-sampling blocks. Each block begins with a convolutional layer, followed by batch normalization and Leaky ReLU activation. This sequence
+The encoder consists of four down-sampling blocks. Each block begins with a convolutional layer, followed by batch normalization and Leaky ReLU activation. This sequence
 is repeated twice within each down-sampling block, ensuring that feature extraction is
 both refined and consistent across layers.
 6
 The decoder includes four up-sampling blocks. Each block begins with an inverse discrete
 wavelet transform (IDWT) to up-sample the feature maps. The output of the IDWT is
 then concatenated with the corresponding features from the up skip connections, after
-which the block applies a convolutional layer, batch normalization, and Leaky ReLU activation. This structure aids in reconstructing the segmentation map while preserving
+which the block applies a convolutional layer, batch normalization, and Leaky ReLU activation. This structure aids in reconstructing the segmentation map while preserving
 high-resolution spatial information from the encoder.
